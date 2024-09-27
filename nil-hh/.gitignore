@@ -1,0 +1,14 @@
+node_modules
+dist/
+/cache/
+/artifacts/
+/typechain-types/
+/ignition/deployments/
+.env
+
+# Local configuration files
+config.ini
+nild.log
+
+# Test database
+test.db/
