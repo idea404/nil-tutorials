@@ -6,7 +6,7 @@ dotenv.config();
 module.exports = buildModule("Manufacturer", (m: any) => {
 
     const pubkey = process.env.WALLET_ADDR;
-    const retailerContractAddress = "0x0001da3cE39CF81b52ad5d745EE2EB10cb7bd1dC";
+    const retailerContractAddress = "0x000123abe3c69d21682a646fabbba784051dd2d2";
 
     const manufacturer = m.contract("Manufacturer", [pubkey, retailerContractAddress]);
 
