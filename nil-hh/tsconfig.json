@@ -1,18 +1,17 @@
 {
-  "include": ["test/**/*"],
+  "include": ["test/**/*", "./hardhat.config.ts", "./scripts/**/*", "./src/**/*", "./tasks/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"],
   "compilerOptions": {
-    "target": "ES2021",
-    "module": "nodenext",
-    "strict": true,
-    "resolveJsonModule": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "esModuleInterop": true,
+    "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./",
     "declaration": true,
     "declarationMap": true
-
   },
 }
