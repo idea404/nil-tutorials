@@ -7,8 +7,10 @@
     "tests": "npx hardhat test --network nil",
     "lint": "biome check ignition/modules test",
     "lint:fix": "biome check --write ignition/modules test",
-    "order": "node scripts/client/internal/order.cjs",
-    "get-products": "node scripts/client/internal/getProducts.cjs"
+    "internal-order": "node scripts/client/internal/order.cjs",
+    "internal-get-products": "node scripts/client/internal/getProducts.cjs",
+    "external-order": "node scripts/client/external/order.cjs",
+    "external-get-products": "node scripts/client/external/getProducts.cjs"
   },
   "keywords": [],
   "author": "",
