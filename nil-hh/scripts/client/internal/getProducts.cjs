@@ -1,6 +1,6 @@
 const { encodeFunctionData, decodeFunctionResult } = require("viem");
 const { PublicClient, HttpTransport } = require("@nilfoundation/niljs");
-const MANUFACTURER_ABI = require("../../artifacts/contracts/Manufacturer.sol/Manufacturer.json").abi;
+const MANUFACTURER_ABI = require("../../../artifacts/contracts/Manufacturer.sol/Manufacturer.json").abi;
 const dotenv = require("dotenv");
 
 dotenv.config();

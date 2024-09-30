@@ -1,7 +1,7 @@
 const { PublicClient, HttpTransport, WalletV1, Faucet, waitTillCompleted, LocalECDSAKeySigner } = require("@nilfoundation/niljs");
 const { encodeFunctionData } = require("viem");
 const dotenv = require("dotenv");
-const RETAILER_ABI = require("../../artifacts/contracts/Retailer.sol/Retailer.json").abi;
+const RETAILER_ABI = require("../../../artifacts/contracts/Retailer.sol/Retailer.json").abi;
 
 dotenv.config();
 
