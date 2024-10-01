@@ -2,7 +2,6 @@
   "name": "hardhat-example",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "tests": "npx hardhat test --network nil",
     "lint": "biome check ignition/modules test",

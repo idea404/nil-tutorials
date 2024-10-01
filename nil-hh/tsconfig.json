@@ -1,9 +1,9 @@
 {
-  "include": ["test/**/*", "./hardhat.config.ts", "./scripts/**/*", "./src/**/*", "./tasks/**/*"],
+  "include": ["test/**/*", "hardhat.config.ts", "./scripts/**/*", "./src/**/*", "./tasks/**/*", "./ignition/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"],
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "ES2020",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
@@ -12,6 +12,7 @@
     "outDir": "./dist",
     "rootDir": "./",
     "declaration": true,
-    "declarationMap": true
-  },
+    "declarationMap": true,
+    "resolveJsonModule": true
+  }
 }
