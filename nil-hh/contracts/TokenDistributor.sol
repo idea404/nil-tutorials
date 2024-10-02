@@ -41,6 +41,33 @@ contract TokenDistributor {
     }
 
     /**
+     * @dev Distributes the specified token equally among the provided recipients.
+     *
+     * @param token The token to distribute and its amount.
+     * @param recipients An array of recipient addresses.
+     */
+    function distributeToken(Nil.Token calldata token, address[] calldata recipients) external {
+        uint256 numRecipients = recipients.length;
+        require(numRecipients > 0, "TokenDistributor: No recipients provided");
+
+        uint256 share = token.amount / numRecipients;
+        require(share > 0, "TokenDistributor: Token amount too low for distribution");
+
+        Nil.Token[] memory tokensToSend = new Nil.Token[](1);
+        tokensToSend[0] = Nil.Token(token.id, share);
+
+        for (uint256 j = 0; j < numRecipients; j++) {
+            Nil.syncCall(
+                recipients[j],
+                gasleft(),
+                0,
+                tokensToSend,
+                ""
+            );
+        }
+    }
+
+    /**
      * @dev Allows the contract to receive tokens.
      */
     receive() external payable {}
