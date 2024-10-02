@@ -17,7 +17,7 @@ dotenv.config();
 const RPC_ENDPOINT = process.env.NIL_RPC_ENDPOINT;
 console.log(`🔗 RPC Endpoint: ${RPC_ENDPOINT}`);
 
-const DISTTRIBUTOR_CONTRACT_ADDRESS = "0x00018bEf6813fDe19465BBf406Fa0dC99Fd96464";
+const DISTRIBUTOR_CONTRACT_ADDRESS = "0x00018bEf6813fDe19465BBf406Fa0dC99Fd96464";
 const DISTRIBUTOR_ABI = [
     {
         inputs: [],
@@ -273,7 +273,7 @@ async function main() {
     {
         console.log("💸 Transferring tokens from wallet one to contract...");
         const transferMessage = await wallet.sendMessage({
-            to: DISTTRIBUTOR_CONTRACT_ADDRESS,
+            to: DISTRIBUTOR_CONTRACT_ADDRESS,
             value: 1_000_000n,
             feeCredit: 100_000n * 10n,
             tokens: [
@@ -295,14 +295,14 @@ async function main() {
         await waitTillCompleted(client, 1, transferMessage);
         console.log("✅ Tokens transferred from wallet three to wallet one.");
 
-        const tokens = await client.getCurrencies(DISTTRIBUTOR_CONTRACT_ADDRESS, "latest");
+        const tokens = await client.getCurrencies(DISTRIBUTOR_CONTRACT_ADDRESS, "latest");
         console.log("💰 Tokens in contract:", tokens);
     }
 
     {
         console.log("💸 Distributing tokens from contract to wallet four and wallet five...");
         const distributeMessage = await wallet.sendMessage({
-            to: DISTTRIBUTOR_CONTRACT_ADDRESS,
+            to: DISTRIBUTOR_CONTRACT_ADDRESS,
             data: encodeFunctionData({
                 abi: DISTRIBUTOR_ABI,
                 functionName: "distributeToken",
