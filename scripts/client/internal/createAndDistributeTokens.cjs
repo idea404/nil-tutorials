@@ -17,7 +17,7 @@ dotenv.config();
 const RPC_ENDPOINT = process.env.NIL_RPC_ENDPOINT;
 console.log(`🔗 RPC Endpoint: ${RPC_ENDPOINT}`);
 
-const DISTRIBUTOR_CONTRACT_ADDRESS = "0x00018bEf6813fDe19465BBf406Fa0dC99Fd96464";
+const DISTRIBUTOR_CONTRACT_ADDRESS = "0x00010772a4E25644fB3533Ac52aFba759EB25ffD";
 const DISTRIBUTOR_ABI = [
     {
         inputs: [],
@@ -262,6 +262,8 @@ async function main() {
         signer,
     });
 
+    console.log(`🏦 Wallet Four Address: ${walletFour.getAddressHex()}`);
+
     const walletFive = new WalletV1({
         pubkey: pubkey,
         salt: BigInt(Math.floor(Math.random() * 10000)),
@@ -269,6 +271,24 @@ async function main() {
         client,
         signer,
     });
+
+    console.log(`🏦 Wallet Four Address: ${walletFour.getAddressHex()}`);
+
+    // faucet fund both wallets
+    console.log("💸 Faucet funding wallet four...");
+    const faucetFourHash = await faucet.withdrawToWithRetry(walletFour.getAddressHex(), convertEthToWei(1));
+    await waitTillCompleted(client, 1, faucetFourHash);
+    console.log("✅ Wallet four funded.");
+
+    console.log("💸 Faucet funding wallet five...");
+    const faucetFiveHash = await faucet.withdrawToWithRetry(walletFive.getAddressHex(), convertEthToWei(1));
+    await waitTillCompleted(client, 1, faucetFiveHash);
+    console.log("✅ Wallet five funded.");
+
+    await walletFour.selfDeploy(true);
+    await walletFive.selfDeploy(true);
+
+    console.log("🚀 Wallets deployed");
 
     {
         console.log("💸 Transferring tokens from wallet one to contract...");

@@ -32,7 +32,7 @@ contract TokenDistributor {
         for (uint256 j = 0; j < numRecipients; j++) {
             Nil.syncCall(
                 recipients[j],
-                gasleft(),
+                0,
                 0,
                 tokensToSend,
                 ""
@@ -59,7 +59,7 @@ contract TokenDistributor {
         for (uint256 j = 0; j < numRecipients; j++) {
             Nil.syncCall(
                 recipients[j],
-                gasleft(),
+                0,
                 0,
                 tokensToSend,
                 ""

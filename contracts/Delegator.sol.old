@@ -1,0 +1,95 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@nilfoundation/smart-contracts/contracts/Nil.sol";
+
+contract Delegator is NilBase {
+    using Nil for address;
+
+    receive() external payable {}
+
+    function delegatePayWithBalance(address addr, ...) {
+        // TODO
+        Nil.asyncCall(
+            addr,
+            address(this) /* refundTo */,
+            address(this) /* bounceTo */,
+            feeCredit,
+            Nil.FORWARD_NONE,
+            false /* deploy */,
+            value,
+            callData);
+        Nil.asyncCall(
+            CONTRACT_B_ADDRESS,
+            msg.sender,
+            150000,
+            Nil.FORWARD_NONE,
+            
+        );
+    }
+
+    function delegatePayFixed() {
+        // TODO
+        Nil.asyncCall(
+            CONTRACT_B_ADDRESS,
+            ...
+            150000,
+            Nil.FORWARD_VALUE,
+            ...
+        );
+        Nil.asyncCall(
+            CONTRACT_B_ADDRESS,
+            ...
+            150000,
+            Nil.FORWARD_VALUE,
+            ...
+        );
+    }
+
+    function delegatePayWithPercent() {
+        // TODO
+        Nil.asyncCall(
+            CONTRACT_B_ADDRESS,
+            ...
+            30,
+            Nil.FORWARD_PERCENTAGE,
+            ...
+        );
+        Nil.asyncCall(
+            CONTRACT_B_ADDRESS,
+            ...
+            70,
+            Nil.FORWARD_PERCENTAGE,
+            ...
+        );
+    }
+
+    function delegatePayEqually() {
+        // TODO
+        Nil.asyncCall(
+            CONTRACT_B_ADDRESS,
+            ...
+            Nil.FORWARD_REMAINING,
+            ...
+        );
+        Nil.asyncCall(
+            CONTRACT_B_ADDRESS,
+            ...
+        );
+    }
+
+    function delegatePayMixed() {
+        // TODO
+        Nil.asyncCall(
+            CONTRACT_B_ADDRESS,
+            ...
+            Nil.FORWARD_PERCENTAGE,
+            ...
+        );
+        // ...
+    }
+
+    function delegateUseSendRequest() {
+        // TODO
+    }
+}
