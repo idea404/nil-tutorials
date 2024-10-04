@@ -10,3 +10,5 @@ npx hardhat ignition deploy ./ignition/modules/Retailer.ts --network nil
 npx hardhat ignition deploy ./ignition/modules/Manufacturer.ts --network nil
 npx hardhat ignition deploy ./ignition/modules/ManufacturerRevert.ts --network nil
 npx hardhat ignition deploy ./ignition/modules/TokenDistributor.ts --network nil
+npx hardhat ignition deploy ./ignition/modules/Executor.ts --network nil
+npx hardhat ignition deploy ./ignition/modules/Delegator.ts --network nil
