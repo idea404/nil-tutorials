@@ -194,8 +194,9 @@ async function testDelegatorMethods() {
         console.log(`   ${method.name} transaction completed.`);
         console.log(`   Receipt: ${receipt.map((r) => r.status)}`);
 
-        console.log(`   Waiting for a few blocks to ensure the async calls have been processed...`);
-        await new Promise((resolve) => setTimeout(resolve, 30000)); // 30 seconds
+        // Below not required for local testing
+        // console.log(`   Waiting for a few blocks to ensure the async calls have been processed...`);
+        // await new Promise((resolve) => setTimeout(resolve, 30000)); // 30 seconds
 
         console.log(`   Checking if the first call was successful...`);
         const success0 = await client.call(
